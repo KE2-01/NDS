@@ -11,7 +11,7 @@ int tekla; // Sakatutako tekla gordetzeko aldagaia
 
 
 
-int TeklaDetektatu() 
+int teklaDetektatu() 
 {
 	// TRUE itzultzen du teklaren bat sakatu dela detektatzen badu
 	if ((~TEKLAK_DAT & 0x03ff)!=0) return 1;
@@ -19,7 +19,7 @@ int TeklaDetektatu()
 
 }
 
-int SakatutakoTekla() 
+int sakatutakoTekla() 
 {
 
 	// Sakatutako teklaren balioa itzultzen du: A=0;B=1;Select=2;Start=3;Esk=4;Ezk=5;
