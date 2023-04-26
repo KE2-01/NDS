@@ -8,24 +8,16 @@ adibide batean oinarrituta.
 #include <stdlib.h>		// C-ko liburutegi estandarra memoria erreserbak eta zenbaki bihurketak egiteko
 #include <unistd.h>		// Sistema eragileen arteko bateragarritasuna ziurtatzeko liburutegia
 
-// Geuk garatutako fitxategiak
-
-#include "grafikoak.h"		
+//Geuk garatutako fitxategiak
+	
 #include "definizioak.h"
-#include "spriteak.h"
-#include "jokoa01.h"
+#include "periferikoak.h"
+#include "zerbitzuErrutinak.h"
+#include "fondoak.h"
 
+int denb;
 
-//---------------------------------------------------------------------------------
-int main(void) {
-//---------------------------------------------------------------------------------
-
-	HasieratuGrafikoakSpriteak();
-	EtenakBaimendu();
-
-	// Zuen jokoari dei egingo zaio hemendik
-	jokoa();
-
-	return(0);
-
+void jokoa()
+{	
+	// TODO Complete jokoa() method.
 }
