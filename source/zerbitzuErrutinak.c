@@ -19,6 +19,7 @@ void ZE_Teklatua() {
 			case A:
 				jokoaHasi();
 				EGOERA = JOLASTEN;
+				T3min = 0;
 				break;
 			case B:
 				jokoaAmaitu();
@@ -49,7 +50,9 @@ void ZE_Timer0() {
 	case JOLASTEN:
 		T3min++;
 		break;
-		if (T3min == 3 * 60 * )
+		if (T3min == 3 * 60 * ) {
+			EGOERA = HASIERA;
+		}
 	default:
 		break;
 	}
