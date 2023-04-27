@@ -41,13 +41,19 @@ touchPosition PANT_DAT;
 #define R 8 
 #define L 9
 
-#define ZAI 0
-#define ITXITA 1
-#define IREKITA 2
-extern int EGOERA;
-
 // Egoerak
+extern int EGOERA;
 #define HASIERA 0
 #define JOLASTEN 1
 #define GAMEOVER 2
 #define AMAITU 3
+
+// Maxmod Utility
+// Songs (audio folder)
+#define MOD_INGAME 0
+#define MOD_RR 1
+
+// Other Settings
+#define MSL_NSONGS 2
+#define MSL_NSAMPS 0
+#define MSL_BANKSIZE 2

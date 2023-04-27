@@ -10,16 +10,16 @@ adibide batean oinarrituta.
 #include "spriteak.h"
 #include "definizioak.h"
 
-u16* gfxerronbo;
-u16* gfxerronboHandia;
+u16* gfxPlayer;
+u16* gfxBoss;
 
 
 /* Pantailan erakutsi nahi den sprite bakoitzeko memoria erreserbatu.*/
 void memoriaErreserbatu()
 {
 	/* Pantaila nagusian gehitu nahi den sprite bakoitzarentzako horrelako bat egin behar da. */
-	gfxerronbo= oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
-	gfxerronboHandia=oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
+	gfxPlayer = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
+	gfxBoss = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
 }
 
 /* Pixel bakoitzak har ditzakeen 256 balioetako bakoitzari kolore bat esleitu PANTAILA NAGUSIAN. 0 balioa gardena da 
@@ -37,27 +37,24 @@ void PaletaNagusiaEzarri() {
    hurrengo lauak beheko ezkerreko koadrantean eta azkeneko lauak beheko eskuineko koadrantean. 
    Alboko irudian ikusten den bezala. */
 
-u8 erronbo[256] = 
-{
-	0,0,0,0,0,0,2,2,0,0,0,0,0,2,2,2,	//	0,0,0,0,0,0,2,2, 2,2,0,0,0,0,0,0,
-	0,0,0,0,2,2,2,2,0,0,0,2,2,2,2,2,	//	0,0,0,0,0,2,2,2, 2,2,2,0,0,0,0,0,
-	0,0,2,2,2,2,2,2,0,2,2,2,2,2,2,2,	//	0,0,0,0,2,2,2,2, 2,2,2,2,0,0,0,0,
-	2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,	//	0,0,0,2,2,2,2,2, 2,2,2,2,2,0,0,0,
- 
-	2,2,0,0,0,0,0,0,2,2,2,0,0,0,0,0,	//	0,0,2,2,2,2,2,2, 2,2,2,2,2,2,0,0,
-	2,2,2,2,0,0,0,0,2,2,2,2,2,0,0,0,	//	0,2,2,2,2,2,2,2, 2,2,2,2,2,2,2,0,
-	2,2,2,2,2,2,0,0,2,2,2,2,2,2,2,0,	//	2,2,2,2,2,2,2,2, 2,2,2,2,2,2,2,2,
-	2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,	//	2,2,2,2,2,2,2,2, 2,2,2,2,2,2,2,2,
-
-	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,	//	1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,
-	0,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,	//	1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1,
-	0,0,0,1,1,1,1,1,0,0,0,0,1,1,1,1,	//	0,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,0,
-	0,0,0,0,0,1,1,1,0,0,0,0,0,0,1,1,	//	0,0,1,1,1,1,1,1, 1,1,1,1,1,1,0,0,
-
-	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,	//	0,0,0,1,1,1,1,1, 1,1,1,1,1,0,0,0,
-	1,1,1,1,1,1,1,0,1,1,1,1,1,1,0,0,	//	0,0,0,0,1,1,1,1, 1,1,1,1,0,0,0,0,
-	1,1,1,1,1,0,0,0,1,1,1,1,0,0,0,0,	//	0,0,0,0,0,1,1,1, 1,1,1,0,0,0,0,0,
-	1,1,1,0,0,0,0,0,1,1,0,0,0,0,0,0,	//	0,0,0,0,0,0,1,1, 1,1,0,0,0,0,0,0,
+u8 player[256] =
+	{
+		 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+		 0,  0,  0,  0,  0,  0,  0,  9,  0,  0,  0,  0,  0,  0,  9, 10,
+		 0,  0,  0,  0,  0,  9, 10, 10,  0,  0, 11,  0,  0,  9, 10,  5,
+		 0,  0, 11,  0,  9, 10,  5,  5,  0,  0, 11,  9,  1, 10,  5, 19,
+		 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+		 9,  0,  0,  0,  0,  0,  0,  0, 10,  9,  0,  0,  0,  0,  0,  0,
+		10, 10,  9,  0,  0,  0,  0,  0,  5, 10,  9,  0,  0, 11,  0,  0,
+		19, 19, 10,  9,  0, 11,  0,  0, 19, 19, 10,  1,  9, 11,  0,  0,
+		 0,  0,  9,  1,  1, 10,  3,  3,  0,  9, 10,  1,  1, 10,  3,  3,
+		 0,  9, 10,  1,  1, 10, 10, 10,  0,  9, 10,  1,  9, 10, 10,  9,
+		 0,  9, 10,  9,  0,  9,  9,  0,  0,  9,  9,  0,  0,  0,  0,  0,
+		 0,  9,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+		 3,  3, 10,  1,  1,  9,  0,  0,  3,  3, 10,  1,  1, 10,  9,  0,
+		10, 10, 10,  1,  1, 10,  9,  0,  9, 10, 10,  9,  1, 10,  9,  0,
+		 0,  9,  9,  0,  9, 10,  9,  0,  0,  0,  0,  0,  0,  9,  9,  0,
+		 0,  0,  0,  0,  0,  0,  9,  0,  0,  0,  0,  0,  0,  0,  0,  0,
 };
 
 u8 erronboHandia[1024] = 
@@ -104,19 +101,19 @@ int i;
 	//16*16ko spriteentzako
 	for(i = 0; i < 16 * 16 / 2; i++) 
 	{	
-		gfxerronbo[i] = erronbo[i*2] | (erronbo[(i*2)+1]<<8);				
+		gfxPlayer[i] = player[i*2] | (player[(i*2)+1]<<8);				
 	}
 	//32*32ko spriteentzako
 	for(i = 0; i < 32 * 32 / 2; i++) 
 	{	
-		gfxerronboHandia[i] = erronboHandia[i*2] | (erronboHandia[(i*2)+1]<<8);				
+		gfxBoss[i] = erronboHandia[i*2] | (erronboHandia[(i*2)+1]<<8);				
 	}
 }
 
 /* Funtzio honek erronbo bat irudikatzen du pantailako x-y posizioan. Pantailan ateratzea nahi den erronbo 
    bakoitzari indize desberdin bat esleitu behar zaio, 0 eta 126 balioen arteko indizea izan daiteke */
 
-void ErakutsiErronboa(int indizea, int x, int y)
+void showJokalaria(int indizea, int x, int y)
 { 
  
 oamSet(&oamMain, //main graphics engine context
@@ -126,7 +123,7 @@ oamSet(&oamMain, //main graphics engine context
 		0,					  //this is the palette index if multiple palettes or the alpha value if bmp sprite	
 		SpriteSize_16x16,     
 		SpriteColorFormat_256Color, 
-		gfxerronbo,//+16*16/2,                  //pointer to the loaded graphics
+		gfxPlayer,//+16*16/2,                  //pointer to the loaded graphics
 		-1,                  //sprite rotation data  
 		false,               //double the size when rotating?
 		false,			//hide the sprite?
@@ -138,7 +135,7 @@ oamUpdate(&oamMain);
 }
 
 /* Funtzio honek erronbo baten indizea pasata pantailatik ezabatzen du */
-void EzabatuErronboa(int indizea, int x, int y)
+void hideJokalaria(int indizea, int x, int y)
 {
 
 oamSet(&oamMain, //main graphics engine context
@@ -148,7 +145,7 @@ oamSet(&oamMain, //main graphics engine context
 		0,					  //this is the palette index if multiple palettes or the alpha value if bmp sprite	
 		SpriteSize_16x16,     
 		SpriteColorFormat_256Color, 
-		gfxerronbo,//+16*16/2,                  //pointer to the loaded graphics
+		gfxPlayer,//+16*16/2,                  //pointer to the loaded graphics
 		-1,                  //sprite rotation data  
 		false,               //double the size when rotating?
 		true,			//hide the sprite?
@@ -159,7 +156,7 @@ oamUpdate(&oamMain);
 
 }
 
-void ErakutsiErronboHandia(int indizea, int x, int y)
+void showBoss(int indizea, int x, int y)
 { 
  
 oamSet(&oamMain, //main graphics engine context
@@ -169,7 +166,7 @@ oamSet(&oamMain, //main graphics engine context
 		0,					  //this is the palette index if multiple palettes or the alpha value if bmp sprite	
 		SpriteSize_32x32,     
 		SpriteColorFormat_256Color, 
-		gfxerronboHandia,//+16*16/2,                  //pointer to the loaded graphics
+		gfxBoss,//+16*16/2,                  //pointer to the loaded graphics
 		-1,                  //sprite rotation data  
 		false,               //double the size when rotating?
 		false,			//hide the sprite?
@@ -181,7 +178,7 @@ oamSet(&oamMain, //main graphics engine context
 oamUpdate(&oamMain);  
 }
 
-void EzabatuErronboHandia(int indizea, int x, int y)
+void hideBoss(int indizea, int x, int y)
 {
 
 oamSet(&oamMain, //main graphics engine context
@@ -191,7 +188,7 @@ oamSet(&oamMain, //main graphics engine context
 		0,					  //this is the palette index if multiple palettes or the alpha value if bmp sprite	
 		SpriteSize_32x32,     
 		SpriteColorFormat_256Color, 
-		gfxerronboHandia,//+16*16/2,                  //pointer to the loaded graphics
+		gfxBoss,//+16*16/2,                  //pointer to the loaded graphics
 		-1,                  //sprite rotation data  
 		false,               //double the size when rotating?
 		true,			//hide the sprite?

@@ -9,8 +9,12 @@ periferikoak.c
 #include "fondoak.h"
 #include "spriteak.h"
 
+// Maxmod Utility
+#include <maxmod.h> // Maxmod definitions for ARM9
+#include "soundbank.h" // Soundbank definitions
+
 int EGOERA;
-int seg3;
+int T3min;
 
 void ZE_Teklatua() {
 	switch (EGOERA) {
@@ -18,6 +22,7 @@ void ZE_Teklatua() {
 		switch (sakatutakoTekla()) {
 			case A:
 				jokoaHasi();
+				mmStart(MOD_INGAME, MM_PLAY_LOOP); // Start background song from memory
 				EGOERA = JOLASTEN;
 				T3min = 0;
 				break;
@@ -51,6 +56,7 @@ void ZE_Timer0() {
 		T3min++;
 		break;
 		if (T3min == 3 * 60 * ) {
+			mmStop(); // Stop current song
 			EGOERA = HASIERA;
 		}
 	default:

@@ -19,5 +19,29 @@ int denb;
 
 void jokoa()
 {	
-	// TODO Complete jokoa() method.
+	EGOERA = HASIERA;
+
+	// Keyboard config
+	// int TEK_konf = ALDATU_BALIO_HAU;
+	// konfiguratuTeklatua(TEK_konf);
+
+	// Timer0 config
+	// int Latch = ALDATU_BALIO_HAU;
+	// int TENP_konf = ALDATU_BALIO_HAU;
+	// konfiguratuTenporizadorea(Latch, TENP_konf);
+
+	// Baimendu teklatuaren etenak
+	TekEtenBaimendu();
+
+	// Denboragailuaren etenak baimendu
+	ErlojuaMartxanJarri();
+	DenbEtenBaimendu();
+
+	// Zerbitzu errutinak ezarri
+	etenZerbErrutEzarri();
+
+	while (EGOERA != AMAITU) {
+		iprintf("\x1b[10;5HPLACEHOLDER");
+		iprintf("\x1b[15;5HPLACEHOLDER");
+	}
 }
