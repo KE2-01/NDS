@@ -15,20 +15,19 @@ adibide batean oinarrituta.
 #include "zerbitzuErrutinak.h"
 #include "fondoak.h"
 
-int denb;
 
 void jokoa()
 {	
 	EGOERA = HASIERA;
 
 	// Keyboard config
-	// int TEK_konf = ALDATU_BALIO_HAU;
-	// konfiguratuTeklatua(TEK_konf);
+	int TEK_konf = 0x43FC; // A + B -> Inkesta
+	konfiguratuTeklatua(TEK_konf);
 
 	// Timer0 config
-	// int Latch = ALDATU_BALIO_HAU;
-	// int TENP_konf = ALDATU_BALIO_HAU;
-	// konfiguratuTenporizadorea(Latch, TENP_konf);
+	int Latch = 62259; // (65536 - (1/10)*(33554432/1024)) = (65536 - (33554432/10240)) = (65536 - 3277)
+	int TENP_konf = 0xC3; // 1100 0011
+	konfiguratuTenporizadorea(Latch, TENP_konf);
 
 	// Baimendu teklatuaren etenak
 	TekEtenBaimendu();
