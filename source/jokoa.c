@@ -14,10 +14,15 @@ adibide batean oinarrituta.
 #include "periferikoak.h"
 #include "zerbitzuErrutinak.h"
 #include "fondoak.h"
+#include "jokoa.h"
 
+#include <maxmod.h>
 
-void jokoa()
-{	
+extern int T3min;
+extern bool BIZIRIK;
+touchPosition PANT_DAT;
+
+void jokoa() {	
 	EGOERA = HASIERA;
 
 	// Keyboard config
@@ -30,11 +35,11 @@ void jokoa()
 	konfiguratuTenporizadorea(Latch, TENP_konf);
 
 	// Baimendu teklatuaren etenak
-	TekEtenBaimendu();
+	tekEtenBaimendu();
 
 	// Denboragailuaren etenak baimendu
-	ErlojuaMartxanJarri();
-	DenbEtenBaimendu();
+	erlojuaMartxanJarri();
+	denbEtenBaimendu();
 
 	// Zerbitzu errutinak ezarri
 	etenZerbErrutEzarri();
@@ -42,5 +47,30 @@ void jokoa()
 	while (EGOERA != AMAITU) {
 		iprintf("\x1b[10;5HPLACEHOLDER");
 		iprintf("\x1b[15;5HPLACEHOLDER");
+
+		if (EGOERA == JOLASTEN && !BIZIRIK) {
+			mmStop();
+			hidePlayer(1, POSX, POSY);
+			EGOERA = GAMEOVER;
+		}
+		if (EGOERA == GAMEOVER) {
+			if (PANT_DAT.px > 0 || PANT_DAT.py > 0) {
+				EGOERA = HASIERA;
+			}
+		}
 	}
+}
+
+void jokoaHasi() {
+	mmEffect(SFX_INGAME); // Start background song from memory
+	BIZIRIK = true;
+	int POSX = 128;
+	int POSY = 191;
+	showPlayer(1, POSX, POSY);
+	T3min = 0;
+	EGOERA = JOLASTEN;
+}
+
+void jokoaAmaitu() {
+	EGOERA = AMAITU;
 }

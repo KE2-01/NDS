@@ -1,3 +1,6 @@
+#ifndef DEFINIZIOAK_H
+#define DEFINIZIOAK_H
+
 /*-------------------------------------
 definizioak.h
 -------------------------------------*/
@@ -26,7 +29,7 @@ definizioak.h
 
 
 // ukimen-pantailaren erregistroak
-touchPosition PANT_DAT;
+extern touchPosition PANT_DAT;
 
 // Teklei izena eman diegu zenbakiak nahasgarriak izan daitezkeelako
 
@@ -50,10 +53,17 @@ extern int EGOERA;
 
 // Maxmod Utility
 // Songs (audio folder)
-#define MOD_INGAME 0
-#define MOD_RR 1
+#define SFX_INGAME 0
+#define SFX_SECRET 1
 
 // Other Settings
-#define MSL_NSONGS 2
-#define MSL_NSAMPS 0
+#define MSL_NSONGS 0
+#define MSL_NSAMPS 2
 #define MSL_BANKSIZE 2
+
+// Player related variables
+extern bool BIZIRIK;
+extern int POSX;
+extern int POSY;
+
+#endif /* DEFINIZIOAK_H */

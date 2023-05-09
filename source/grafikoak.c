@@ -98,7 +98,7 @@ void hasieratuFondoak() {
 
 /* ----       HONAINO       ---- */
 
-void GrafikoakHasieratu()
+void grafikoakHasieratu()
 {
 	powerOn(POWER_ALL_2D);
     lcdMainOnBottom();
@@ -121,12 +121,12 @@ void initSpriteMem() {
 
 
 
-void HasieratuGrafikoakSpriteak()
+void hasieratuGrafikoakSpriteak()
 {
-	GrafikoakHasieratu();
+	grafikoakHasieratu();
 	hasieratuFondoak();
 	initSpriteMem();
 	memoriaErreserbatu();
-	PaletaNagusiaEzarri();
-	SpriteakMemorianGorde();
+	paletaNagusiaEzarri();
+	spriteakMemorianGorde();
 }

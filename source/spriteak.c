@@ -24,7 +24,7 @@ void memoriaErreserbatu()
 
 /* Pixel bakoitzak har ditzakeen 256 balioetako bakoitzari kolore bat esleitu PANTAILA NAGUSIAN. 0 balioa gardena da 
    eta definitu gabeko balioak beltzak. SPRITEARI KOLOREAK ESLEITZEKO ALDATU*/
-void PaletaNagusiaEzarri() {
+void paletaNagusiaEzarri() {
 
 	SPRITE_PALETTE[1] = RGB15(31,0,0); // 1 baliodun pixelak gorriak izango dira.
 	SPRITE_PALETTE[2] = RGB15(0,31,0); // 2 baliodun pixelak berdeak izango dira.
@@ -95,7 +95,7 @@ u8 erronboHandia[1024] =
 /* Irudikatutako Spriteak memorian kargatzen ditu. SPRITE bat baino gehiago erakusteko
 for bana egin behar da.*/
 
-void SpriteakMemorianGorde(){ 
+void spriteakMemorianGorde(){ 
 	
 int i;
 	//16*16ko spriteentzako
@@ -113,7 +113,7 @@ int i;
 /* Funtzio honek erronbo bat irudikatzen du pantailako x-y posizioan. Pantailan ateratzea nahi den erronbo 
    bakoitzari indize desberdin bat esleitu behar zaio, 0 eta 126 balioen arteko indizea izan daiteke */
 
-void showJokalaria(int indizea, int x, int y)
+void showPlayer(int indizea, int x, int y)
 { 
  
 oamSet(&oamMain, //main graphics engine context
@@ -135,7 +135,7 @@ oamUpdate(&oamMain);
 }
 
 /* Funtzio honek erronbo baten indizea pasata pantailatik ezabatzen du */
-void hideJokalaria(int indizea, int x, int y)
+void hidePlayer(int indizea, int x, int y)
 {
 
 oamSet(&oamMain, //main graphics engine context

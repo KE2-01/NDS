@@ -8,6 +8,7 @@ periferikoak.c
 #include "periferikoak.h"
 #include "fondoak.h"
 #include "spriteak.h"
+#include "jokoa.h"
 
 // Maxmod Utility
 #include <maxmod.h> // Maxmod definitions for ARM9
@@ -15,6 +16,9 @@ periferikoak.c
 
 int EGOERA;
 int T3min;
+int POSX;
+int POSY;
+bool BIZIRIK = true;
 
 void ZE_Teklatua() {
 	switch (EGOERA) {
@@ -22,27 +26,46 @@ void ZE_Teklatua() {
 		switch (sakatutakoTekla()) {
 			case A:
 				jokoaHasi();
-				mmStart(MOD_INGAME, MM_PLAY_LOOP); // Start background song from memory
-				EGOERA = JOLASTEN;
-				T3min = 0;
 				break;
 			case B:
 				jokoaAmaitu();
-				EGOERA = AMAITU;
 				break;
 			default:
 				break;
 		}
 		break;
 	case JOLASTEN:
-		if (sakatutakoTekla() == A) {
-			tiroEgin();
+		switch (sakatutakoTekla()) {
+		case A:
+			//tiroEgin();
+			break;
+		case EZKER:
+			hidePlayer(1, POSX, POSY);
+			showPlayer(1, POSX-1, POSY);
+			POSX -= 1;
+			break;
+		case ESKUBI:
+			hidePlayer(1, POSX, POSY);
+			showPlayer(1, POSX+1, POSY);
+			POSX += 1;
+			break;
+		case GORA:
+			hidePlayer(1, POSX, POSY);
+			showPlayer(1, POSX, POSY+1);
+			POSY += 1;
+			break;
+		case BEHERA:
+			hidePlayer(1, POSX, POSY);
+			showPlayer(1, POSX, POSY-1);
+			POSY -= 1;
+			break;
+		default:
+			break;
 		}
 		break;
 	case GAMEOVER:
 		if (sakatutakoTekla() == B) {
 			jokoaAmaitu();
-			EGOERA = AMAITU;
 		}
 		break;
 	default:
@@ -55,7 +78,7 @@ void ZE_Timer0() {
 	case JOLASTEN:
 		T3min++;
 		break;
-		if (T3min == 3 * 60 * ) {
+		if (T3min == 3 * 60 * 10) {
 			mmStop(); // Stop current song
 			EGOERA = HASIERA;
 		}

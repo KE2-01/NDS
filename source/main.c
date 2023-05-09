@@ -13,8 +13,7 @@ adibide batean oinarrituta.
 
 // Geuk garatutako fitxategiak
 
-#include "grafikoak.h"		
-#include "definizioak.h"
+#include "grafikoak.h"
 #include "spriteak.h"
 #include "jokoa.h"
 
@@ -24,11 +23,9 @@ int main(void) {
 //---------------------------------------------------------------------------------
 
 	// MaxMod from https://maxmod.devkitpro.org
-	mmInitDefaultMem( (mm_addr) soundbank_bin);
-	mmLoad(MOD_INGAME); // Load ingame song into memory
+	mmInitDefault( (mm_addr) "../soundbank/soundbank.bin", 2 );
 
-	HasieratuGrafikoakSpriteak();
-	EtenakBaimendu();
+	hasieratuGrafikoakSpriteak();
 
 	// Enables sound on the DS. Should be called prior to attempting sound playback.
 	soundEnable();
