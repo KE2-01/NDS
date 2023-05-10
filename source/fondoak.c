@@ -27,3 +27,11 @@ void showStars() {
                      (uint16 *)BG_BMP_RAM(0), /* Fondo nagusiaren helbidea */
                      starsBitmapLen); /* Luzera (bytetan); automatikoki sortzen den aldagaia */
 }
+
+void showBlack() {
+	
+	dmaCopyHalfWords(DMA_CHANNEL,
+                     blackBitmap, /* Automatikoki sortzen den aldagaia */
+                     (uint16 *)BG_BMP_RAM(0), /* Fondo nagusiaren helbidea */
+                     blackBitmapLen); /* Luzera (bytetan); automatikoki sortzen den aldagaia */
+}

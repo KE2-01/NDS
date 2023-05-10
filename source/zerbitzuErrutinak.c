@@ -26,6 +26,7 @@ void ZE_Teklatua() {
 		switch (sakatutakoTekla()) {
 			case A:
 				jokoaHasi();
+				showStars();
 				break;
 			case B:
 				jokoaAmaitu();
@@ -40,24 +41,18 @@ void ZE_Teklatua() {
 			//tiroEgin();
 			break;
 		case EZKER:
-			hidePlayer(1, POSX, POSY);
-			showPlayer(1, POSX-1, POSY);
-			POSX -= 1;
+			if (POSX > 0) {
+				hidePlayer(1, POSX, POSY);
+				showPlayer(1, POSX-1, POSY);
+				POSX -= 1;
+			}
 			break;
 		case ESKUBI:
-			hidePlayer(1, POSX, POSY);
-			showPlayer(1, POSX+1, POSY);
-			POSX += 1;
-			break;
-		case GORA:
-			hidePlayer(1, POSX, POSY);
-			showPlayer(1, POSX, POSY+1);
-			POSY += 1;
-			break;
-		case BEHERA:
-			hidePlayer(1, POSX, POSY);
-			showPlayer(1, POSX, POSY-1);
-			POSY -= 1;
+			if (POSX < 239) {
+				hidePlayer(1, POSX, POSY);
+				showPlayer(1, POSX+1, POSY);
+				POSX += 1;
+			}
 			break;
 		default:
 			break;
@@ -76,6 +71,7 @@ void ZE_Teklatua() {
 void ZE_Timer0() {
 	switch (EGOERA) {
 	case JOLASTEN:
+		moveEnemies();
 		T3min++;
 		break;
 		if (T3min == 3 * 60 * 10) {

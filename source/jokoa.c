@@ -51,6 +51,7 @@ void jokoa() {
 		if (EGOERA == JOLASTEN && !BIZIRIK) {
 			mmStop();
 			hidePlayer(1, POSX, POSY);
+			showBlack();
 			EGOERA = GAMEOVER;
 		}
 		if (EGOERA == GAMEOVER) {
@@ -62,6 +63,7 @@ void jokoa() {
 }
 
 void jokoaHasi() {
+	mmLoadEffect(SFX_INGAME);
 	mmEffect(SFX_INGAME); // Start background song from memory
 	BIZIRIK = true;
 	int POSX = 128;
