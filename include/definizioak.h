@@ -64,6 +64,15 @@ extern int EGOERA;
 // Player related variables
 extern bool BIZIRIK;
 extern int POSX;
-extern int POSY;
+extern int recoil;
+extern bool tiro;
+extern int ytiro;
+extern int xtiro;
+
+// Enemy related variables
+extern int enemyX[];
+extern int enemyY[];
+extern bool enemyAlive[];
+extern bool eskubira[];
 
 #endif /* DEFINIZIOAK_H */

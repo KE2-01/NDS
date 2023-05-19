@@ -31,4 +31,8 @@ extern void hidePlayer(int indizea, int x, int y);
 extern void showBoss(int indizea, int x, int y);
 extern void hideBoss(int indizea, int x, int y);
 
+extern void showProjectile(int indizea, int x, int y);
+extern void hideProjectile(int indizea, int x, int y);
 
+extern void showEnemy(int indizea, int x, int y);
+extern void hideEnemy(int indizea, int x, int y);
