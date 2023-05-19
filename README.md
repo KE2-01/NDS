@@ -1,5 +1,4 @@
-
-    # NDS: Space Invaders
+# NDS: Space Invaders
 
 Konputagailuen Egitura irakasgairako proiektua.
 
