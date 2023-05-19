@@ -11,7 +11,7 @@ int tekla; // Sakatutako tekla gordetzeko aldagaia
 
 
 
-int TeklaDetektatu() 
+int teklaDetektatu() 
 {
 	// TRUE itzultzen du teklaren bat sakatu dela detektatzen badu
 	if ((~TEKLAK_DAT & 0x03ff)!=0) return 1;
@@ -19,7 +19,7 @@ int TeklaDetektatu()
 
 }
 
-int SakatutakoTekla() 
+int sakatutakoTekla() 
 {
 
 	// Sakatutako teklaren balioa itzultzen du: A=0;B=1;Select=2;Start=3;Esk=4;Ezk=5;
@@ -37,8 +37,8 @@ int SakatutakoTekla()
 
 	if (~(TEKLAK_DAT) & 0x0100) return R;
 	if (~(TEKLAK_DAT) & 0x0200) return L;
-	
 
+	return (int) NULL;
 }
 
 void konfiguratuTeklatua(int TEK_konf)
@@ -55,7 +55,7 @@ void konfiguratuTenporizadorea(int Latch, int TENP_konf)
 	
 }
 
-void TekEtenBaimendu()
+void tekEtenBaimendu()
 {
 	// Teklatuaren etenak baimendu
 	// Lan hau burutzeko lehenengo eten guztiak galarazi behar dira eta bukaeran baimendu 
@@ -65,7 +65,7 @@ void TekEtenBaimendu()
 	IME=1;
 }
 
-void TekEtenGalarazi()
+void tekEtenGalarazi()
 {
 
 	// Teklatuaren etenak galarazi
@@ -76,7 +76,7 @@ void TekEtenGalarazi()
 	IME=1;
 }  
 
-void DenbEtenBaimendu()
+void denbEtenBaimendu()
 {
 
 // Denboragailu baten etenak baimendu (Timer0)
@@ -87,7 +87,7 @@ void DenbEtenBaimendu()
 	IME=1;
 }
 
-void DenbEtenGalarazi()
+void denbEtenGalarazi()
 {
 
 // Denboragailu baten etenak galarazi (Timer0)
@@ -99,13 +99,13 @@ void DenbEtenGalarazi()
 
 }
 
-void ErlojuaMartxanJarri()
+void erlojuaMartxanJarri()
 {
 	// HEMEN IDATZI BEHAR DUZUE ZUEN KODEA
 	DENB0_KNT |= 0x00C0;
 }
 
-void ErlojuaGelditu()
+void erlojuaGelditu()
 {
 	// HEMEN IDATZI BEHAR DUZUE ZUEN KODEA
 	DENB0_KNT &= 0xFF7F;

@@ -9,19 +9,16 @@ adibide batean oinarrituta.
 #include <unistd.h>		// Sistema eragileen arteko bateragarritasuna ziurtatzeko liburutegia
 
 // Geuk garatutako fitxategiak
-
-#include "grafikoak.h"		
-#include "definizioak.h"
+#include "grafikoak.h"
 #include "spriteak.h"
-#include "jokoa01.h"
+#include "jokoa.h"
 
 
 //---------------------------------------------------------------------------------
 int main(void) {
 //---------------------------------------------------------------------------------
 
-	HasieratuGrafikoakSpriteak();
-	EtenakBaimendu();
+	hasieratuGrafikoakSpriteak();
 
 	// Zuen jokoari dei egingo zaio hemendik
 	jokoa();

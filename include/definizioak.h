@@ -1,3 +1,6 @@
+#ifndef DEFINIZIOAK_H
+#define DEFINIZIOAK_H
+
 /*-------------------------------------
 definizioak.h
 -------------------------------------*/
@@ -26,7 +29,7 @@ definizioak.h
 
 
 // ukimen-pantailaren erregistroak
-touchPosition PANT_DAT;
+extern touchPosition PANT_DAT;
 
 // Teklei izena eman diegu zenbakiak nahasgarriak izan daitezkeelako
 
@@ -41,13 +44,35 @@ touchPosition PANT_DAT;
 #define R 8 
 #define L 9
 
-#define ZAI 0
-#define ITXITA 1
-#define IREKITA 2
-extern int EGOERA;
-
 // Egoerak
+extern int EGOERA;
 #define HASIERA 0
 #define JOLASTEN 1
 #define GAMEOVER 2
 #define AMAITU 3
+
+// Maxmod Utility
+// Songs (audio folder)
+#define SFX_INGAME 0
+#define SFX_SECRET 1
+
+// Other Settings
+#define MSL_NSONGS 0
+#define MSL_NSAMPS 2
+#define MSL_BANKSIZE 2
+
+// Player related variables
+extern bool BIZIRIK;
+extern int POSX;
+extern int recoil;
+extern bool tiro;
+extern int ytiro;
+extern int xtiro;
+
+// Enemy related variables
+extern int enemyX[];
+extern int enemyY[];
+extern bool enemyAlive[];
+extern bool eskubira[];
+
+#endif /* DEFINIZIOAK_H */

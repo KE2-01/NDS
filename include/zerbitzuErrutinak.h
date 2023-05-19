@@ -2,6 +2,6 @@
 zerbitzuErrutinak.h
 -------------------------------------*/
 
-extern void tekEten ();
-extern void tenpEten();
+extern void ZE_Teklatua();
+extern void ZE_Timer0();
 extern void etenZerbErrutEzarri();

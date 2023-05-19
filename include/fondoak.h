@@ -2,5 +2,7 @@
 fondoak.h
 -------------------------------------*/
 
-extern void erakutsiAtea();
-extern void erakutsiAteaIrekita();
+extern void showStars();
+extern void showBlack();
+extern void showOver();
+extern void showMain();
