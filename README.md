@@ -1,4 +1,5 @@
-# NDS: Space Invaders
+# Souls Invaders
+"Space Invaders" remake for Nintendo DS
 
 Konputagailuen Egitura irakasgairako proiektua.
 
