@@ -65,6 +65,14 @@ void jokoa()
 		iprintf("\x1b[10;5HMario Gomez");
 		iprintf("\x1b[12;5HXiker Indias");
 		iprintf("\x1b[14;5HSendoa Careaga");
+
+		if (sakatutakoTekla() == SELECT || sakatutakoTekla() == B) {
+			if (EGOERA == HASIERA || EGOERA == GAMEOVER) {
+				showBlack();
+				jokoaAmaitu();
+			}
+		}
+
 		switch(EGOERA) {
 			case HASIERA:
 				showMain();

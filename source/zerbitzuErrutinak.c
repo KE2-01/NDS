@@ -41,10 +41,10 @@ void ZE_Teklatua() {
 			POSX = 120;
 			jokoaHasi();
 		}
-		if (sakatutakoTekla() == SELECT) {
+/* 		if (sakatutakoTekla() == SELECT || sakatutakoTekla() == B) {
 			showBlack();
 			jokoaAmaitu();
-		}
+		} */
 
 		break;
 	case JOLASTEN:
@@ -67,14 +67,14 @@ void ZE_Teklatua() {
 		case EZKER:
 			if (POSX > 0) {
 				hidePlayer(1, POSX, 180);
-				showPlayer(1, POSX-1, 180); // Show sprite 1px to the left
+				showPlayer(1, POSX-2, 180); // Show sprite 1px to the left
 				POSX--; // Change logic position of player
 			}
 			break;
 		case ESKUBI:
 			if (POSX < 239) {
 				hidePlayer(1, POSX, 180);
-				showPlayer(1, POSX+1, 180); // Show sprite 1px to the right
+				showPlayer(1, POSX+2, 180); // Show sprite 1px to the right
 				POSX++; // Change logic position of player
 			}
 			break;
@@ -82,11 +82,11 @@ void ZE_Teklatua() {
 			break;
 		}
 		break;
-	case GAMEOVER:
-		if (sakatutakoTekla() == B) {
+	/* case GAMEOVER:
+		if (sakatutakoTekla() == SELECT || sakatutakoTekla() == B) {
 			jokoaAmaitu();
 		}
-		break;
+		break; */
 	default:
 		break;
 	}
