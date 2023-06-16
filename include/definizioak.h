@@ -51,16 +51,6 @@ extern int EGOERA;
 #define GAMEOVER 2
 #define AMAITU 3
 
-// Maxmod Utility
-// Songs (audio folder)
-#define SFX_INGAME 0
-#define SFX_SECRET 1
-
-// Other Settings
-#define MSL_NSONGS 0
-#define MSL_NSAMPS 2
-#define MSL_BANKSIZE 2
-
 // Player related variables
 extern bool BIZIRIK;
 extern int POSX;

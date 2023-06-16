@@ -10,10 +10,6 @@ periferikoak.c
 #include "spriteak.h"
 #include "jokoa.h"
 
-// Maxmod Utility
-#include <maxmod.h> // Maxmod definitions for ARM9
-#include "soundbank.h" // Soundbank definitions
-
 int EGOERA;
 int T3min;
 int recoil;
@@ -102,7 +98,8 @@ void ZE_Timer0() {
 		if (ytiro > 5 && tiro) {
 			ytiro -= 5;
 		}
-		for (int i = 0; i < total; i++) {
+		int i;
+		for (i = 0; i < total; i++) {
 			// Collider check with projectile
 			if (xtiro >= enemyX[i]-8 && xtiro <= enemyX[i]+8) { // Projectile is inside X position range [-10 / 10]
 				if (ytiro >= enemyY[i]-16 && ytiro <= enemyY[i]+16) { // Projectile is inside Y position range [-16 / 16]

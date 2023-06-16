@@ -82,7 +82,8 @@ void jokoa()
 						showOver();
 						EGOERA = GAMEOVER;
 					} else { // Some enemies remaining [INGAME]
-						for (int i = 0; i < total; i++) {
+						int i;
+						for (i = 0; i < total; i++) {
 							if (enemyAlive[i]) {
 								showEnemy(i+6, enemyX[i], enemyY[i]); // If enemy is still alive, show sprite
 							}
@@ -128,7 +129,8 @@ void jokoaAmaitu()
 }
 
 void resetEnemies() {
-	for (int i = 0; i < total; i++) {
+	int i;
+	for (i = 0; i < total; i++) {
 		enemyX[i] = vaultX[i];
 		enemyY[i] = vaultY[i];
 	}
@@ -138,7 +140,8 @@ void resetEnemies() {
 }
 
 void hideAllEnemies() {
-	for (int i = 0; i < total; i++) {
+	int i;
+	for (i = 0; i < total; i++) {
 		if (enemyAlive[i]) {
 			hideEnemy(i+6, enemyX[i], enemyY[i]);
 			enemyX[i] = -99;
